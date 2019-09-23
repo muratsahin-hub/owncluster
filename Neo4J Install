@@ -9,8 +9,10 @@ sudo apt-get install oracle-java8-installer
 # Add Neo4J to repository
 sudo wget -O - http://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
 
+
 # If not working, paste the code without sudo
-sudo su -c "echo 'deb http://www.duinsoft.nl/pkg debs all' >> /etc/apt/sources.list"
+# sudo su -c "echo 'deb http://www.duinsoft.nl/pkg debs all' >> /etc/apt/sources.list" - Issue With This Command
+echo 'deb https://debian.neo4j.org/repo stable/' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
 
 # Update the packages
 sudo apt-get update
