@@ -56,5 +56,7 @@ curl -X GET "localhost:9200"
 #   },
 #   "tagline" : "You Know, for Search"
 # }
-# 
+ 
 # Now that Elasticsearch is up and running, let’s install Kibana, the next component of the Elastic Stack.
+sudo apt install kibana
+
