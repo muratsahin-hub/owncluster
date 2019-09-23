@@ -15,3 +15,15 @@ sudo apt-get install phpmyadmin
 
 # Choose apache2 in the dialog box
 # Click "yes" to db-common
+
+# Get to the MySQL
+sudo mysql
+
+# Change the user password
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '**your pwd**';
+FLUSH PRIVILEGES;
+
+# Create new user with all privileges
+GRANT ALL PRIVILEGES ON *.* TO 'administrator'@'localhost' IDENTIFIED BY '** your pwd**';
+
+# You're done!
