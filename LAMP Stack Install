@@ -26,4 +26,7 @@ FLUSH PRIVILEGES;
 # Create new user with all privileges
 GRANT ALL PRIVILEGES ON *.* TO 'administrator'@'localhost' IDENTIFIED BY '** your pwd**';
 
+# Quit Mysql
+quit
+
 # You're done!
