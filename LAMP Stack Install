@@ -1,0 +1,17 @@
+# Install Apache
+sudo apt-get install apache2
+
+# Install MySQL
+sudo apt-get install mysql-server
+
+# Install PHP
+sudo apt-get install php7.2-cli
+
+# Restart the Apache server to load php modules
+sudo /etc/init.d/apache2 restart
+
+# Install phpMyAdmin on Ubuntu 
+sudo apt-get install phpmyadmin
+
+# Choose apache2 in the dialog box
+# Click "yes" to db-common
