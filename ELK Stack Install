@@ -7,3 +7,26 @@ echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee 
 # update your package lists so APT will read the new Elastic source:
 sudo apt update
 
+# Install Elasticsearch
+sudo apt install elasticsearch
+
+# Once Elasticsearch is finished installing, edit Elasticsearch’s main configuration file,
+sudo nano /etc/elasticsearch/elasticsearch.yml
+
+# Elasticsearch listens for traffic from everywhere on port 9200.
+# You will want to restrict outside access to your Elasticsearch instance to prevent outsiders
+# from reading your data or shutting down your Elasticsearch cluster through the REST API.
+# Find the line that specifies network.host, uncomment it, and replace its value with localhost so it looks like this:
+# /etc/elasticsearch/elasticsearch.yml
+# . . .
+# network.host: localhost
+# . . .
+# Save and close elasticsearch.yml by pressing CTRL+X, followed by Y and then ENTER.
+# N/A after a version, you can skip if you don't see the line specified above.
+
+# Start the Elasticsearch service with systemctl:
+sudo systemctl start elasticsearch
+
+# Check the installation with the command below. Everything is ok if you see a green dot.
+sudo systemctl start elasticsearch
+
