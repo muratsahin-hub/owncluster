@@ -47,3 +47,18 @@ sudo apt-get update
 # Now we can install Cassandra
 sudo apt-get install cassandra
 
+# Check the installation
+nodetool status
+
+# You should see an output similar to below
+# Status=Up/Down
+# |/ State=Normal/Leaving/Joining/Moving
+# --  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
+# UN  127.0.0.1  103.69 KiB  256          100.0%            xxx-xxxx-xxxx-xxxxx-xxxx-xxx-x-xxx   rack1
+
+# Connect to Cassandra
+cqlsh
+
+# You should see something similar to this:
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.6 | CQL spec 3.4.2 | Native protocol v4] Use HELP for help.
