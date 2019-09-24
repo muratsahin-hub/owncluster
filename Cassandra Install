@@ -1,0 +1,49 @@
+# Cassandra requires your using Oracle Java SE (JRE) installed on your server.
+# First, you will have to add Personal Package Archives to make the (JRE) package available.
+sudo add-apt-repository ppa:webupd8team/java
+
+# Update the repository
+sudo apt-get update
+
+# You can now install Oracle JRE Openjdk 11 in Ubuntu, the following commands:
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt install openjdk-11-jdk
+
+# If theres java already installed, you have to set Java 8 as default.
+sudo update-alternatives --config java
+
+# You'll see an output similiar to below. Select Java-8 as default on your case.
+#   Selection    Path                                      Priority   Status
+#------------------------------------------------------------
+#  0            /usr/lib/jvm/java-11-oracle/bin/java     1062      auto mode
+# *1            /usr/lib/jvm/java-8-openjdk/jre/bin/java   1061      manual mode
+#  2            /usr/lib/jvm/java-11-oracle/bin/java     1062      manual mode
+
+# Check your java version
+java -version
+
+# Output will be similar to this
+# Openjdk version "1.8.0_222"
+# OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+# OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+
+# Install Curl
+sudo apt install curl
+
+# Run curl command to add repository keys
+curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+
+# Update the repository
+sudo apt-get update
+
+# If you get the following error: GPG error: http://www.apache.org 36x InRelease: The following signatures couldn’t be verified because the public key is not available: NO_PUBKEY A278B781FE4B2BDA
+# Add the public key by running the following command:
+sudo apt-key adv --keyserver pool.sks-keyservers.net --recv-key A278B781FE4B2BDA
+
+# Repeat the update to the repositories:
+sudo apt-get update
+
+# Now we can install Cassandra
+sudo apt-get install cassandra
+
