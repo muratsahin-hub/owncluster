@@ -1,0 +1,37 @@
+# It is recommended to update your current system packages if it is a new server instance.
+sudo apt update && sudo apt -y upgrade
+
+# Reboot your system
+sudo reboot
+
+# Once the system is rebooted, install vim and wget if not already installed.
+sudo apt install -y wget vim
+
+# Before adding repository content to your Ubuntu 18.04 / Ubuntu 16.04 system, you need to import the repository signing key:
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+# After importing GPG key, add repository contents to your Ubuntu 18.04/16.04 system:
+RELEASE=$(lsb_release -cs)
+echo "deb http://apt.postgresql.org/pub/repos/apt/ ${RELEASE}"-pgdg main | sudo tee  /etc/apt/sources.list.d/pgdg.list
+
+# Verify repository file contents
+cat /etc/apt/sources.list.d/pgdg.list
+
+# The output should look like: deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+
+# Update the repository
+sudo apt update
+
+# Now you can install PostgreSQL-11
+sudo apt -y install postgresql-11
+
+# By default, access to PostgreSQL database server is only from localhost.
+sudo ss -tunelp | grep 5432
+
+# To allow network access, edit configuration file:
+# sudo vim /etc/postgresql/11/main/postgresql.conf
+# Add below line under CONNECTIONS AND AUTHENTICATION section.
+# listen_addresses = '*'
+# You can also specify server IP Address
+# listen_addresses = '192.168.xx.xx'
+
