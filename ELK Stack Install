@@ -70,3 +70,11 @@ sudo systemctl start kibana
 
 # You can reach Kibana with localhost:5601
 
+# Install Logstash 
+sudo apt install logstash
+
+# Create a configuration file
+sudo nano /etc/logstash/conf.d/30-elasticsearch-output.conf
+
+# Test Logstash, if you "Configuration OK" then you should be ok.
+sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
