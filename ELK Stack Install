@@ -68,3 +68,5 @@ sudo systemctl enable kibana
 # Start Kibana service:
 sudo systemctl start kibana
 
+# You can reach Kibana with localhost:5601
+
