@@ -62,3 +62,6 @@ cqlsh
 # You should see something similar to this:
 Connected to Test Cluster at 127.0.0.1:9042.
 [cqlsh 5.0.1 | Cassandra 3.6 | CQL spec 3.4.2 | Native protocol v4] Use HELP for help.
+
+# You can create the first user with the command below
+cqlsh localhost -u cassandra -p cassandra
