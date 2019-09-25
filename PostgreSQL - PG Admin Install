@@ -35,3 +35,23 @@ sudo ss -tunelp | grep 5432
 # You can also specify server IP Address
 # listen_addresses = '192.168.xx.xx'
 
+# Now lets connect to Postgres and create an admin user
+sudo su - postgres
+
+# Create user postgres with password postgres 
+psql -c "alter user postgres with password 'postgres'"
+
+# Update
+sudo apt-get update
+
+# We need python, pip and virtualenv packages // You can skip if installed.
+sudo apt-get install build-essential libssl-dev libffi-dev libgmp3-dev virtualenv python-pip libpq-dev python-dev
+
+# Download PgAdmin4
+wget http://ftp.postgresql.org/pub/pgadmin/pgadmin4/v4.9/pip/pgadmin4-4.9-py2.py3-none-any.whl
+
+# Install PgAdmin4
+pip install pgadmin4-4.9-py2.py3-none-any.whl --user
+
+# Create the configuration file
+ nano lib/python2.7/site-packages/pgadmin4/config_local.py
