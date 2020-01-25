@@ -1,0 +1,6 @@
+#find the MacOS Partition with the command below
+# it will probably be the second one
+sudo gdisk -l /dev/sda
+
+# mark the partition asn an APFS drive then reboot
+sudo sgdisk -t 2:7C3457EF-0000-11AA-AA11-00306543ECAC /dev/sda
