@@ -1,0 +1,78 @@
+# In order to install spark you need to have a AWS EC2 instance or a suitable linux distro running with Hadoop up&running.
+
+# The commands below are optional. In our case, we skipped the upgrde since updating and upgrading may cause compaitibility
+# issues through out the installation.
+sudo apt update
+sudo apt upgrade
+
+# Before installing Spark, you have to check your java version is compaitible with the Spark version. In our case we used
+# "version 3.0.0-preview2" version of spark, which is Java-8 compaitable.
+
+# The command below installs the default JDK, but it will be Java-11. We experienced java compaitibility problem with this
+# version. It is recommened that you check your java version and before installing.
+sudo apt install default-jdk
+
+# If you wish to use a Java-8 compaitible Spark version, please install Java-8 with the commands below.
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt install oracle-java8-installer
+sudo apt install oracle-java8-set-default
+# OR
+sudo apt install openjdk-8-jdk
+
+# Then check your Java version with
+java -version
+
+# If your java version is not set to OpenJDK-8, then use the following command to set change it.
+sudo update-alternatives --config java
+
+# You should see a screen output similar to below. Select the open JDK.
+
+#There are 3 choices for the alternative java (providing /usr/bin/java).
+
+#  Selection    Path                                            Priority   Status
+#------------------------------------------------------------
+#* 0            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      auto mode
+#  1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      manual mode
+#  2            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      manual mode
+#
+#Press <enter> to keep the current choice[*], or type selection number
+
+# Then check your java version again, look for a screen output similar to below.
+# openjdk version "1.8.0_242"
+# OpenJDK Runtime Environment (build ...)
+# OpenJDK 64-Bit Server VM (build ....)
+
+# If everything is OK, then continue to Spark installation.
+# IF NOT PLEASE START OVER AGAIN. ITS BETTER NOT TO STRUGGLE WITH JAVA.
+
+# To install spark, obtain the package first.
+# https://spark.apache.org/downloads.html, find the right package for your configuration.
+# "curl -0 path-to-spark-package"
+curl -O https://www-us.apache.org/dist/spark/spark-2.4.2/spark-2.4.....
+
+# Extract the package, where "..." is your downloaded file name
+tar xvf spark-...
+
+# After the extraction is complete, then move the spark folder to your opt.
+sudo mv spark-....bin-hadoop2.7/ /opt/spark
+
+# Open your bashrc, with vim, vi, nano or another.
+vim ~/.bashrc
+
+# Add the lines below, save and exit.
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+
+# Commit your changes.
+source ~/.bashrc
+
+# Start ths Spark, the screen output should look like:
+# starting org.apache.spark.deploy.master.Master, logging to /opt/spark/logs/spark-root-org....
+start-master.sh
+# OR ./start-master.sh
+
+# Check if spark is runnig:
+# tcp   LISTEN  0       1                           *:8080
+ss -tunelp | grep 8080
+
+
