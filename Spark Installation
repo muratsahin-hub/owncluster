@@ -75,4 +75,39 @@ start-master.sh
 # tcp   LISTEN  0       1                           *:8080
 ss -tunelp | grep 8080
 
+# Lets procees with PySpark
+# First install python3 for pip
+sudo apt install python3-pip
+
+# Then install PySpark
+pip install pyspark
+
+# Go to your home folder. cd cd /home
+
+# We're going to set our spark execution folder.
+# First edit your your bashrc file
+vi ~/.bashrc
+
+# Add the lines below to your bashrc file.
+export SPARK_HOME="/YOUR/home/DIRECTORY/spark/python"
+export PATH="$SPARK_HOME/bin:$PATH"
+
+# Save and exit. by key strokes :wq OR :wq!
+
+# Now you're good to go.
+
+# Execute the command pySpark.
+pyspark
+
+# PySpark terminal will welcome you.
+# Welcome to
+#      ____              __
+#     / __/__  ___ _____/ /__
+#    _\ \/ _ \/ _ `/ __/  '_/
+#   /__ / .__/\_,_/_/ /_/\_\   version 3.0.0-preview2
+#      /_/
+#
+# Using Python version 2.7.17 (default, Nov  7 2019 10:07:09)
+# SparkSession available as 'spark'.
+
 
