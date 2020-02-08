@@ -92,6 +92,9 @@ vim ~/.bashrc
 # Add the below to the end of file. Save and exit. :wq!
 PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
+# Change the python version
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 3
+
 # Now you're good to go.
 
 # Execute the command pySpark.
