@@ -83,7 +83,7 @@ ss -tunelp | grep 8080
 sudo apt install python3-pip
 
 # Then install PySpark
-pip install pyspark
+pip3 install pyspark
 
 # Go to your home folder. cd cd /home
 
