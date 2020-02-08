@@ -111,4 +111,9 @@ pyspark
 # Using Python version 2.7.17 (default, Nov  7 2019 10:07:09)
 # SparkSession available as 'spark'.
 
+# If you encounter problems while processing Turkish characters in files. Paste the code below on the top of your py file. 
 
+# encoding=utf8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
