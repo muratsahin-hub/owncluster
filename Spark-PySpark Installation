@@ -50,6 +50,9 @@ sudo update-alternatives --config java
 # "curl -0 path-to-spark-package"
 curl -O https://www-us.apache.org/dist/spark/spark-2.4.2/spark-2.4.....
 
+#For Hadoop 3.2 or later use link below
+http://kozyatagi.mirror.guzel.net.tr/apache/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop3.2.tgz
+
 # Extract the package, where "..." is your downloaded file name
 tar xvf spark-...
 
