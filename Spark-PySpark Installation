@@ -86,14 +86,14 @@ sudo apt install python3-pip
 pip3 install pyspark
 
 # If you encounter python version error, change your python version.
-# opem your bashrc
-vim ~/.bashrc
+  # opem your bashrc
+  vim ~/.bashrc
+  
+  # Add the below to the end of file. Save and exit. :wq!
+  PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
-# Add the below to the end of file. Save and exit. :wq!
-PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
-
-# Change the python version
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 3
+  # Change the python version
+  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 3
 
 # Now you're good to go.
 
