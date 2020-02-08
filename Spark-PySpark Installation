@@ -85,17 +85,12 @@ sudo apt install python3-pip
 # Then install PySpark
 pip3 install pyspark
 
-# Go to your home folder. cd cd /home
+# If you encounter python version error, change your python version.
+# opem your bashrc
+vim ~/.bashrc
 
-# We're going to set our spark execution folder.
-# First edit your your bashrc file
-vi ~/.bashrc
-
-# Add the lines below to your bashrc file.
-export SPARK_HOME="/YOUR/home/DIRECTORY/spark/python"
-export PATH="$SPARK_HOME/bin:$PATH"
-
-# Save and exit. by key strokes :wq OR :wq!
+# Add the below to the end of file. Save and exit. :wq!
+PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
 # Now you're good to go.
 
