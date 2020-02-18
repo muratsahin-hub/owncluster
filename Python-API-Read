@@ -1,0 +1,44 @@
+# This project connects to an open source currency api, reads the USD and GBP values and pushes to MySQL Database
+# Customize the code according to your needs
+
+print("file opened")
+import requests
+import json
+
+url = "https://api.exchangeratesapi.io/latest?symbols=USD,GBP"
+print("connected to site")
+
+
+response = requests.get(url)
+data = response.text
+parsed = json.loads(data)
+date = parsed["date"]
+
+gbp_rate = parsed["rates"]["GBP"]
+usd_rate = parsed["rates"]["USD"]
+
+
+print("On " + date + " EUR equals " + str(gbp_rate) + " GBP")
+print("On " + date + " EUR equals " + str(usd_rate) + " USD")
+
+import mysql.connector
+from mysql.connector import Error
+
+try:
+    connection = mysql.connector.connect(host='--your host--',
+                                         database='--database name--',
+                                         user='--mysql username--',
+                                         password='--your password--')
+    val = ("aa","bb","cc")
+    sql_execute = "INSERT INTO TEST (DT, CURRENCY, VALUE) VALUES (%s,%s,%s)"
+    print(sql_execute)
+    if connection.is_connected():
+        db_Info = connection.get_server_info()
+        print("Connected to MySQL Server version ", db_Info)
+        cursor = connection.cursor()
+        cursor.execute(sql_execute, val)
+        connection.commit()
+        #record = cursor.fetchone()
+
+except Error as e:
+    print("Error while connecting to MySQL", e)
